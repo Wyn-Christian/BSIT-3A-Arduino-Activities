@@ -3,7 +3,7 @@
   Course-Section:
   Date:
 
-  Title: PR8 - Servo Motor
+  Title: PR5 - Servo Motor
   Description: In thiscircuit, you’ll be using a photoresistor,which changes resistance based on howmuch light the sensor receives.
  */
 #include <Servo.h>
