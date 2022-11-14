@@ -1,6 +1,6 @@
 /*
   Name:
-  Course-Section:
+  Course-Section: BSIT-3A
   Date:
 
   Title: PR6 - 7 Segment
