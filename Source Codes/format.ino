@@ -1,6 +1,6 @@
 /*
   Name:
-  Section: BSIT-3A
+  Course-Section: BSIT-3A
   Date:
 
   Title:
