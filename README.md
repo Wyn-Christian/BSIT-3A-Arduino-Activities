@@ -10,7 +10,7 @@ Source Codes:
 - [x] Project 5 - **Servo Motor**
 - [x] Project 6 - **7 Segment**
 - [x] Project 7 - **PIR**
-- [ ] Project 8 - **Motor Basics**
+- [x] Project 8 - **Motor Basics**
 - [ ] Project 9 - ???
 - [ ] Project 10 - ???
 - [ ] Project 11 - ???
