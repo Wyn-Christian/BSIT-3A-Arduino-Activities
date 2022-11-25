@@ -4,6 +4,8 @@ Source Codes:
 
 - [x] Project 1 - **LED**
 - [x] MP 1 - **Alternating Blinky Lights**
+- [x] MP 2 - **Servo Motor - Button**
+- [x] MP 3 - **Obstacle Avoiding Car Motor**
 - [x] Project 2 - **Potentiometer**
 - [x] Project 3 - **Photoresistor**
 - [x] Project 4 - **RGB**
@@ -19,6 +21,8 @@ PDFs:
 
 - [x] Project 1 - **LED**
 - [x] MP 1 - **Alternating Blinky Lights**
+- [x] MP 2 - **Servo Motor - Button**
+- [x] MP 3 - **Obstacle Avoiding Car Motor**
 - [x] Project 2 - **Potentiometer**
 - [x] Project 3 - **Photoresistor**
 - [x] Project 4 - **RGB**
