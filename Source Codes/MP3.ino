@@ -1,198 +1,132 @@
 /*
-  Name:
+  Name: Rebanal, Wyn Christian D.
   Course-Section: BSIT-3A
-  Date:
+  Date: 11/28/22
 
-  Title: MP3
-  Description:
-  URL: https://create.arduino.cc/projecthub/tanujdeeptds/arduino-obstacle-avoiding-car-using-servo-and-l298n-driver-c9a96d
+  Title: MP3 - Obstacle Avoiding Car
  */
 
-#include <Servo.h>   //standard library for the servo
-#include <NewPing.h> //for the Ultrasonic sensor function library.
+#include <Servo.h>
 
-// L298N motor control pins
-const int LeftMotorForward = 6;
-const int LeftMotorBackward = 7;
-const int RightMotorForward = 5;
-const int RightMotorBackward = 4;
+// Global Variable
+int duration = 0;
+long distance = 0;
+int firstduration = 0;
+long firstdistance = 0;
+int secondduration = 0;
+long seconddistance = 0;
 
-// sensor pins
-#define trig_pin A1 // analog input 1
-#define echo_pin A2 // analog input 2
+Servo myservo;
 
-#define maximum_distance 200
-boolean goesForward = false;
-int distance = 100;
-
-NewPing sonar(trig_pin, echo_pin, maximum_distance); // sensor function
-Servo servo_motor;
+int pos = 0;
 
 void setup()
 {
+  pinMode(5, OUTPUT);
+  pinMode(6, INPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
 
-  pinMode(RightMotorForward, OUTPUT);
-  pinMode(LeftMotorForward, OUTPUT);
-  pinMode(LeftMotorBackward, OUTPUT);
-  pinMode(RightMotorBackward, OUTPUT);
-
-  servo_motor.attach(9); // our servo pin
-
-  servo_motor.write(115);
-  delay(2000);
-  distance = readPing();
-  delay(100);
-  distance = readPing();
-  delay(100);
-  distance = readPing();
-  delay(100);
-  distance = readPing();
-  delay(100);
-
-  // Serial.begin(9600);
+  myservo.attach(3);
+  Serial.begin(9600);
 }
 
 void loop()
 {
+  digitalWrite(5, HIGH);
+  delayMicroseconds(10);
 
-  int distanceRight = 0;
-  int distanceLeft = 0;
-  delay(50);
+  digitalWrite(5, LOW);
+  delayMicroseconds(2);
 
-  // Serial.print("Distance: " + distance);
+  duration = pulseIn(6, HIGH);
+  delay(100);
+  distance = duration * 0.034 / 2;
+
+  Serial.println(distance);
 
   if (distance <= 20)
   {
-    moveStop();
-    delay(300);
-    moveBackward();
-    delay(400);
-    moveStop();
-    delay(300);
-    distanceRight = lookRight();
-    delay(300);
-    distanceLeft = lookLeft();
+    digitalWrite(7, LOW);
+    digitalWrite(8, LOW);
+    digitalWrite(9, LOW);
+    digitalWrite(10, LOW);
     delay(300);
 
-    if (distance >= distanceLeft)
+    digitalWrite(7, LOW);
+    digitalWrite(8, HIGH);
+    digitalWrite(9, LOW);
+    digitalWrite(10, HIGH);
+
+    delay(350);
+    digitalWrite(7, LOW);
+    digitalWrite(8, LOW);
+    digitalWrite(9, LOW);
+    digitalWrite(10, LOW);
+
+    myservo.write(0);
+    delay(500);
+    digitalWrite(5, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(5, LOW);
+    delayMicroseconds(2);
+
+    firstduration = pulseIn(6, HIGH);
+    delay(100);
+    firstdistance = firstduration * 0.034 / 2;
+    int first = firstdistance;
+
+    Serial.println(firstdistance);
+
+    myservo.write(90);
+    delay(500);
+
+    myservo.write(180);
+    delay(500);
+
+    digitalWrite(5, HIGH);
+    delayMicroseconds(10);
+
+    digitalWrite(5, LOW);
+    delayMicroseconds(2);
+
+    secondduration = pulseIn(6, HIGH);
+    delay(100);
+
+    seconddistance = secondduration * 0.034 / 2;
+    int second = seconddistance;
+
+    Serial.println(seconddistance);
+
+    myservo.write(90);
+    delay(500);
+
+    if (first < second)
     {
-      turnRight();
-      moveStop();
+      digitalWrite(7, LOW);
+      digitalWrite(8, HIGH);
+      digitalWrite(9, HIGH);
+      digitalWrite(10, LOW);
+      delay(500);
     }
-    else
+    else if (first > second)
+
     {
-      turnLeft();
-      moveStop();
+
+      digitalWrite(7, HIGH);
+      digitalWrite(8, LOW);
+      digitalWrite(9, LOW);
+      digitalWrite(10, HIGH);
+      delay(500);
     }
   }
   else
   {
-    moveForward();
+    digitalWrite(7, HIGH);
+    digitalWrite(8, LOW);
+    digitalWrite(9, HIGH);
+    digitalWrite(10, LOW);
   }
-  distance = readPing();
-}
-
-int lookRight()
-{
-  servo_motor.write(50);
-  delay(500);
-  int distance = readPing();
-  delay(100);
-  servo_motor.write(115);
-  return distance;
-}
-
-int lookLeft()
-{
-  servo_motor.write(170);
-  delay(500);
-  int distance = readPing();
-  delay(100);
-  servo_motor.write(115);
-  return distance;
-  delay(100);
-}
-
-int readPing()
-{
-  delay(70);
-  int cm = sonar.ping_cm();
-  if (cm == 0)
-  {
-    cm = 250;
-  }
-  return cm;
-}
-
-void moveStop()
-{
-
-  digitalWrite(RightMotorForward, LOW);
-  digitalWrite(LeftMotorForward, LOW);
-  digitalWrite(RightMotorBackward, LOW);
-  digitalWrite(LeftMotorBackward, LOW);
-}
-
-void moveForward()
-{
-
-  if (!goesForward)
-  {
-
-    goesForward = true;
-
-    digitalWrite(LeftMotorForward, HIGH);
-    digitalWrite(RightMotorForward, HIGH);
-
-    digitalWrite(LeftMotorBackward, LOW);
-    digitalWrite(RightMotorBackward, LOW);
-  }
-}
-
-void moveBackward()
-{
-
-  goesForward = false;
-
-  digitalWrite(LeftMotorBackward, HIGH);
-  digitalWrite(RightMotorBackward, HIGH);
-
-  digitalWrite(LeftMotorForward, LOW);
-  digitalWrite(RightMotorForward, LOW);
-}
-
-void turnRight()
-{
-
-  digitalWrite(LeftMotorForward, HIGH);
-  digitalWrite(RightMotorBackward, HIGH);
-
-  digitalWrite(LeftMotorBackward, LOW);
-  digitalWrite(RightMotorForward, LOW);
-
-  delay(500);
-
-  digitalWrite(LeftMotorForward, HIGH);
-  digitalWrite(RightMotorForward, HIGH);
-
-  digitalWrite(LeftMotorBackward, LOW);
-  digitalWrite(RightMotorBackward, LOW);
-}
-
-void turnLeft()
-{
-
-  digitalWrite(LeftMotorBackward, HIGH);
-  digitalWrite(RightMotorForward, HIGH);
-
-  digitalWrite(LeftMotorForward, LOW);
-  digitalWrite(RightMotorBackward, LOW);
-
-  delay(500);
-
-  digitalWrite(LeftMotorForward, HIGH);
-  digitalWrite(RightMotorForward, HIGH);
-
-  digitalWrite(LeftMotorBackward, LOW);
-  digitalWrite(RightMotorBackward, LOW);
 }
