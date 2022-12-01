@@ -13,8 +13,8 @@ Source Codes:
 - [x] Project 6 - **7 Segment**
 - [x] Project 7 - **PIR**
 - [x] Project 8 - **Motor Basics**
-- [ ] Project 9 - ???
-- [ ] Project 10 - ???
+- [x] Project 9 - **Water Level Sensor**
+- [x] Project 10 - **Soil Moisture Sensor**
 - [ ] Project 11 - ???
 
 PDFs:
@@ -30,6 +30,6 @@ PDFs:
 - [x] Project 6 - **7 Segment**
 - [x] Project 7 - **PIR**
 - [x] Project 8 - **Motor Basics**
-- [ ] Project 9 - ???
-- [ ] Project 10 - ???
+- [x] Project 9 - **Water Level Sensor**
+- [x] Project 10 - **Soil Moisture Sensor**
 - [ ] Project 11 - ???
