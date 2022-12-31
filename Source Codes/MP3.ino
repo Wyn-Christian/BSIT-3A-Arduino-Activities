@@ -1,7 +1,7 @@
 /*
-  Name: Rebanal, Wyn Christian D.
+  Name:
   Course-Section: BSIT-3A
-  Date: 11/28/22
+  Date:
 
   Title: MP3 - Obstacle Avoiding Car
  */

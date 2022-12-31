@@ -1,7 +1,7 @@
 /*
-  Name: Wyn Christian D. Rebanal
-  Section: BSIT-3A
-  Date: 10/19/2022
+  Name:
+  Course-Section: BSIT-3A
+  Date:
 
   Title: MP1 — Alternating Blinky Lights
   Description: Build a prototype on the breadboard that has 5 LEDs alternating blinking lights
