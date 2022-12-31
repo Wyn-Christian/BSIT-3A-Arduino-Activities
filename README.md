@@ -16,7 +16,7 @@ Source Codes:
 - [x] Project 9 - **Water Level Sensor**
 - [x] Project 10 - **Soil Moisture Sensor**
 - [x] Project 11 - **OLED**
-- [x] MP 4 - **Obstacle Avoiding Car Motor**
+- [x] MP 4 - **Distance Sensor**
 - [x] Project 12 - **Interfacing Active Buzzer**
 
 PDFs:
@@ -36,4 +36,4 @@ PDFs:
 - [x] Project 10 - **Soil Moisture Sensor**
 - [x] Project 11 - **OLED**
 - [x] Project 12 - **Interfacing Active Buzzer**
-- [ ] MP 4 - **Obstacle Avoiding Car Motor** (n/a)
+- [ ] MP 4 - **Distance Sensor** (n/a)
