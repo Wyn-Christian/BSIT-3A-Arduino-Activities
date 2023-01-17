@@ -18,6 +18,7 @@ Source Codes:
 - [x] Project 11 - **OLED**
 - [x] MP 4 - **Distance Sensor**
 - [x] Project 12 - **Interfacing Active Buzzer**
+- [x] MP 5 - **Traffic Light**
 
 PDFs:
 
@@ -37,3 +38,4 @@ PDFs:
 - [x] Project 11 - **OLED**
 - [x] Project 12 - **Interfacing Active Buzzer**
 - [ ] MP 4 - **Distance Sensor** (n/a)
+- [ ] MP 5 - **Traffic Light** (n/a)
